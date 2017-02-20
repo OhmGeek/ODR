@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{title}}</title>
+		
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+                <link rel="stylesheet"href="https://community.dur.ac.uk/cs.seg04/bootstrap-custom/css/bootstrap.min.css">
+		<link rel="stylesheet"href="https://community.dur.ac.uk/cs.seg04/bootstrap-custom/css/bootstrap-theme.min.css">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" type="text/css" href="./css/print.css" media="print">
+		<!-- Stylesheet for editing -->
+		<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="./css/jquery.notebook.css">
+		<!--Own styling-->
+		<link rel="stylesheet" type="text/css" href="./css/forms.css">
+
+		<!--Own JavaScript-->
+		<script src="./js/forms.js"></script>
+
+		<!--Code for the Rich Text Editing of forms-->
+		<script src="./js/jquery.notebook.js"></script>
+		<script>
+		$(document).ready(function() {
+				$('.editable').notebook();
+			});
+		</script>
+	</head>
+	
+	<body>
+	<!-- Navigation bar -->
+		<div class = "container">
+			<!--Comes from navbar.twig-->
+			{{navbar|raw}}
+
+		
+		<!-- MAIN DOCUMENT STARTS HERE -->
+			<div class="document-container">
+				{{form|raw}}
+			</div>
+			
+			<div id= "alerts">
+			</div>
+		</div>
+	</body>
+</html>

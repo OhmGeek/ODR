@@ -1,0 +1,20 @@
+<!--AIM IS FOR THIS TO GENERATE ALL POSSIBLE TABLES FOR FORMS -->
+<table class = "table table-bordered">
+	<col width="35%">
+	<col width="5%">
+	<col width="45%">
+	<tr>
+		<th>Criteria</th>
+		<th>Mark</th>
+		<th>Rationale</th>
+	</tr>
+	{% for row in rows %}
+		<tr>
+			<td class = "padding">{{row.criteria|raw}}</td>
+			<td class = "{% if row.markReadOnly %} no-edit {% endif %}form-textarea"><textarea form="{{formID}}" name= "mark-{{row.markID}}" {% if row.markReadOnly %} readonly {% endif %}>{{row.mark}} </textarea></td>
+			<td {% if row.rationaleReadOnly  %} class="no-edit" {% endif %}><div
+class="form-txt-area {% if not row.rationaleReadOnly %}editable {% else %} no-edit{% endif %}" form="{{formID}}" id = "rationale-{{row.rationaleID}}"> {{row.rationale | raw}} </div></td>
+		</tr>
+	{% endfor %}
+</table>
+

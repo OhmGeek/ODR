@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+<!-- jQuery library -->
+		<script src="http://community.dur.ac.uk/cs.seg04/jquery-3.1.1.js"></script>
+		<!-- bootstrap -->
+		<script src="http://community.dur.ac.uk/cs.seg04/bootstrap-custom/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="http://community.dur.ac.uk/cs.seg04/bootstrap-custom/css/bootstrap.min.css">
+		<script src="https://community.dur.ac.uk/cs.seg04/password/conCEPt/conCEPt/public/js/Chart.bundle.min.js"></script>
+		
+		
+		<!-- alert-danger and alert-success must be defined here as the color field is not properly collected from the theme -->
+		<style>
+			.thick {
+					font-weight: bold;
+			}
+			body { 
+				padding-top: 80px 
+			}
+		
+			.alert-danger{
+				color:#ffffff
+			}
+			.alert-success{
+				color:#ffffff
+			}
+			.center {
+				float: none;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.thick {
+				font-weight: bold;
+			}
+			body {
+				padding-top: 30px;
+			}
+			.jumbotron {
+				color: black;
+				text-align: center;
+				height: 625px;
+				background-image: 
+					url('https://community.dur.ac.uk/change-ringers.society/images/ringing/localringing/durhamfull.jpg');
+				background-repeat: norepeat;
+				background-size: cover;			
+			}
+
+			canvas{
+				width: 100% !important;
+				max-width: 800px;
+				height: auto !important;
+			}
+		</style>
+		
+		
+	</head>
+	
+	<body>
+	<!-- this is an introductory page for any admin -->
+	{{navbar|raw}}
+	<div class="jumbotron">
+		<h1>Hello, {{username}}.</h1>
+		<p>There are currently {{numberOfStudents}} students and {{numberOfMarkers}} markers.</p>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			Quick Links
+		</div>
+		<div class="panel-body">
+			<ul class="nav nav-pills">
+					<li role="presentation"><a href="admin_services.php?route=adding">Assign supervisors and examiners</a></li>
+					<li role="presentation"><a href="admin_services.php?route=linking">Add Forms</a></li>
+					<li role="presentation"><a
+href="admin_services.php?route=printing">Print Student Forms</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">	
+			<div class="panel-heading">
+				Statistics
+			</div>
+			<div class="panel-body">
+			<div><canvas id="initial-forms-chart" style="height: 10px"></canvas></div>
+			</div>
+	</div>
+
+	<script>
+		var formsChart = document.getElementById('initial-forms-chart').getContext("2d");
+		var submittedFormNum = parseInt("{{ submittedFormCount }}");
+		var unsubmittedFormNum = parseInt("{{ unSubmittedFormCount }}");
+		if(!submittedFormNum) {
+			submittedFormNum = 0;
+		}
+		if(!unsubmittedFormNum) {
+			unsubmittedFormNum = 0;
+		}
+	
+	//for the pie chart
+	var formsData = {
+			labels: [
+				"Submitted",
+				"Unsubmitted"
+				],
+				datasets: [
+				{
+						data: [submittedFormNum,
+unsubmittedFormNum],
+					backgroundColor: [
+						//green
+						'#9FA161',
+						//red
+						'#AA2B4A'
+					],
+					hoverBackgroundColor: [
+						//green
+						'#9FA161',
+						//red
+						'#AA2B4A'
+					]
+				}]
+		};
+		//create the chart of submitted vs unsubmitted
+var chart = new Chart(formsChart, {
+	type: 'pie',
+	data: formsData,
+});
+	</script>
+	</body>
+</html>
