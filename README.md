@@ -1,6 +1,8 @@
 # ODR
 An Online Document Repository for ECS at Durham University. It's a marking system for third and fourth year projects.
 
+Designed by students, and a system designed as part of our Group Project module. Any views in this repo are not those of Durham University.
+
 ## Requirements:
 - PHP 5.3
 - Twig
