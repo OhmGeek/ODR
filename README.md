@@ -10,6 +10,13 @@ Designed by students, and a system designed as part of our Group Project module.
 - WKHTMLtoPDF for PDF generation (on a separate server)
 - PDFGenerator script
 
+## Repository Structure
+### conCEPt
+Inside this folder is the code for the system. This is divided up to Model, View and Controller, as well as Public (for the public facing JS and CSS).
+
+### Documentation
+This contains two markdown documents which act as user guides for the admins and markers. There is also a database guide (as a pdf), along with a demo database (the SQL file).
+
 ## Setting up:
 The whole project should be wrapped in Apache Authentication. This can be done by moving the whole project into the 'password' folder on Durham Community hosting, or done manually by configuring Apache.
 
